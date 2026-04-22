@@ -50,7 +50,18 @@ async function dartGet<T = unknown>(
     }
   }
 
-  const res = await request(url.toString(), { method: "GET" });
+  const res = await request(url.toString(), {
+    method: "GET",
+    // OpenDART occasionally returns 302 (infra-level redirect, e.g., L4
+    // balancer). PowerShell Invoke-RestMethod auto-follows; undici must
+    // opt in. 5 is plenty — one hop is the realistic cap.
+    maxRedirections: 5,
+    headers: {
+      // Some Korean gov APIs gatekeep by User-Agent. Send a plain UA.
+      "user-agent": "dart-mcp/0.1.0 (+https://github.com/vertical-mcp/dart-mcp)",
+      accept: "application/json, */*",
+    },
+  });
   if (res.statusCode < 200 || res.statusCode >= 300) {
     throw new Error(`OpenDART HTTP ${res.statusCode} on ${endpoint}`);
   }
