@@ -1,0 +1,9 @@
+# Smithery deployment config
+# https://smithery.ai/docs/build/project-config
+#
+# TypeScript runtime: Smithery bundles src/index.ts with esbuild and hosts
+# it behind StreamableHTTP transport. The default export of src/index.ts
+# must be a factory `({ config }) => Server`, and `configSchema` must be a
+# named zod export describing per-session config.
+
+runtime: "typescript"

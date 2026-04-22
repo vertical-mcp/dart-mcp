@@ -1,0 +1,23 @@
+{
+  "name": "dart-mcp",
+  "displayName": "DART MCP (Korea)",
+  "description": "Korea FSS electronic disclosure (DART / OpenDART): company disclosures, corporate profiles, and financial statements for KOSPI/KOSDAQ/KONEX-listed and unlisted issuers.",
+  "version": "0.1.0",
+  "author": "Yongbum Kim",
+  "license": "MIT",
+  "homepage": "https://github.com/vertical-mcp/dart-mcp",
+  "repository": "https://github.com/vertical-mcp/dart-mcp",
+  "runtime": "node",
+  "entrypoint": "dist/index.js",
+  "install": {
+    "npm": "@vertical-mcp/dart-mcp"
+  },
+  "env": {
+    "DART_API_KEY": {
+      "required": true,
+      "description": "OpenDART API key (40-character string). Register free at https://opendart.fss.or.kr. Required for all tools."
+    }
+  },
+  "categories": ["finance", "korea", "disclosure", "research"],
+  "tags": ["dart", "opendart", "korea", "fss", "kospi", "kosdaq", "konex", "xbrl", "finance", "disclosure"]
+}
